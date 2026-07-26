@@ -1,0 +1,87 @@
+# ==============================
+# Claude Code session config
+# ==============================
+.claude/
+
+# ==============================
+# OS & File System artifacts
+# ==============================
+.DS_Store
+.DS_Store?
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.swp
+*.swo
+*~
+
+# ==============================
+# macOS junk (resource forks, etc.)
+# ==============================
+__MACOSX/
+
+# ==============================
+# IDE / Editor
+# ==============================
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.atom/
+.sublime-workspace
+
+# ==============================
+# OS temp / metadata folders
+# ==============================
+Mainfiles/
+
+# ==============================
+# Root-level standalone / dev files
+# ==============================
+*.jpeg
+*.jpg
+*.png
+app.jpeg
+vitabu.jpeg
+vitabu.png
+web-splash.jpeg
+dos.txt
+logs.txt
+test.html
+check_db.php
+AUDIT_REPORT.md
+Documentation/
+
+# ==============================
+# System / build
+# ==============================
+*.log
+*.class
+*.pyc
+.history
+.svn/
+.build/
+.buildlog/
+
+# ==============================
+# Node / PHP (root-level)
+# ==============================
+node_modules/
+vendor/
+npm-debug.log*
+yarn-error.log*
+
+# ==============================
+# Environment files
+# ==============================
+.env
+.env.local
+.env.*.local

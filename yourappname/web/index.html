@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Read books and magazines online with Vitabu.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Vitabu">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png" />
+
+  <title>Vitabu</title>
+  <link rel="manifest" href="manifest.json">
+
+  <!-- GOOGLE LOGIN CHANGE YOUR WEB CLIENT ID -->
+  <meta name="google-signin-client_id"
+    content="578620986436-alipk3moq86edgrg1mgo5md43t9i55gd.apps.googleusercontent.com">
+
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    .loading-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      /* full screen height */
+      width: 100vw;
+      /* full screen width */
+      overflow: hidden;
+    }
+
+    .loading-image {
+      max-width: min(92vw, 420px);
+      max-height: min(70vh, 420px);
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+  </style>
+
+</head>
+
+<body style="overflow: hidden">
+  <!-- Firebase JS SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <div class="loading-container">
+    <img class="loading-image" src="web-splash.jpeg" />
+  </div>
+
+  <script type="module">
+    // Import the functions you need from the Firebase SDKs
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-analytics.js";
+    import { getMessaging } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-messaging.js";
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyC_RAVMJylb-jljRcZFyzyqyIZ16EZIaSg",
+      authDomain: "vitabu-73bdf.firebaseapp.com",
+      projectId: "vitabu-73bdf",
+      storageBucket: "vitabu-73bdf.firebasestorage.app",
+      messagingSenderId: "578620986436",
+      appId: "1:578620986436:web:1f5923f2b3c91de6405811",
+      measurementId: "G-CY7G0NW310"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+  </script>
+  <!-- PDf Viewer -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+<script type="text/javascript">
+  pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.worker.min.js";
+</script>
+
+  <!-- Include HLS.js -->
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest" type="application/javascript"></script>
+
+  <!-- Paystack Inline JS -->
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+
+  <!-- Force HTML Renderer (must be before flutter_bootstrap.js) -->
+  <script type="text/javascript">window.flutterWebRenderer = "html";</script>
+
+  <!-- Flutter Bootstrap Script -->
+  <script src="flutter_bootstrap.js" defer></script>
+</body>
+
+</html>

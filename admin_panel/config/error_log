@@ -1,0 +1,4 @@
+[26-Mar-2026 22:26:32 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/kiilitgn/console.vitabu.online/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/kiilitgn/console.vitabu.online/config/services.php on line 18

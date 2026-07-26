@@ -1,0 +1,198 @@
+@extends('admin.layout.page-app')
+@section('page_title', __('label.add_sales_report'))
+@section('tab_title', __('label.add_sales_report'))
+
+@section('content')
+@include('admin.layout.sidebar')
+
+<div class="right-content">
+    @include('admin.layout.header')
+
+    <!-- Select2 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" />
+
+    <div class="body-content">
+        <!-- mobile title -->
+        <h1 class="page-title-sm">{{__('label.add_sales_report')}}</h1>
+
+        <div class="border-bottom row mb-3">
+            <div class="col-sm-10">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{__('label.dashboard')}}</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('admin.salesaudiobooks.index') }}">{{__('label.audio_book_sales_report')}}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{__('label.add_sales_report')}}</li>
+                </ol>
+            </div>
+            <div class="col-sm-2 d-flex align-items-center justify-content-end">
+                <a href="{{ route('admin.salesaudiobooks.index') }}" class="btn btn-default mw-120 mb-3">{{__('label.sales_report_list')}}</a>
+            </div>
+        </div>
+
+        <div class="card custom-border-card">
+            <div class="card-body py-0">
+                <form id="save_sales_report" enctype="multipart/form-data">
+                    <input type="hidden" name="id">
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>{{__('label.user')}}<span class="text-danger">*</span></label>
+                                        <select class="form-control" name="user_id" id="user_id">
+                                            <option value="">{{__('label.select_user')}}</option>
+                                            @foreach($users as $user)
+                                            <option value="{{$user['id']}}">{{$user['first_name']}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>{{__('label.author')}}<span class="text-danger">*</span></label>
+                                        <select class="form-control" name="author_id" id="author_id">
+                                            <option value="">{{__('label.select_author')}}</option>
+                                            @foreach($authors as $author)
+                                            <option value="{{$author['id']}}">{{$author['first_name']}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>{{__('label.audiobook')}}<span class="text-danger">*</span></label>
+                                        <select class="form-control" name="audiobook_id" id="audiobook_id">
+                                            <option value="">{{__('label.select_audiobook')}}</option>
+                                           
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>{{__('label.audiobook_episode')}}</label>
+                                        <select class="form-control" name="audiobook_episode_id" id="audiobook_episode_id">
+                                            <option value="" selected>{{__('label.select_audiobook_episode')}}</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>{{__('label.coupon_code')}}</label>
+                                        <input type="text" class="form-control" name="coupon_code" placeholder="{{__('label.coupon_code_here')}}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-top pt-3 text-right">
+                        <button type="button" class="btn btn-default mw-120" onclick="save_sales_report()">{{__('label.save')}}</button>
+                        <a href="{{route('admin.salesaudiobooks.index')}}" class="btn btn-cancel mw-120 ml-2">{{__('label.cancel')}}</a>
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+
+@section('pagescript')
+<!-- Select2 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+<script>
+    // Sidebar Scroll Down
+    sidebar_down($(document).height());
+
+    $(document).ready(function() {
+        $('#user_id').select2();
+        $('#author_id').select2();
+        $('#audiobook_id').select2();
+        $('#audiobook_episode_id').select2();
+
+    });
+
+    // Save AudioBook
+    function save_sales_report() {
+
+        var Demo_Mode = '<?php echo Demo_Mode(); ?>';
+        if (Demo_Mode == 1) {
+
+            $("#dvloader").show();
+            var formData = new FormData($("#save_sales_report")[0]);
+            $.ajax({
+                type: 'POST',
+                url: '{{ route("admin.salesaudiobooks.store") }}',
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(resp) {
+                    $("#dvloader").hide();
+                    get_responce_message(resp, 'save_sales_report', '{{ route("admin.salesaudiobooks.index") }}');
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    $("#dvloader").hide();
+                    toastr.error(errorThrown, textStatus);
+                }
+            });
+        } else {
+            showError();
+        }
+    }
+
+    $('#audiobook_id').change(function() {
+        var id = $(this).children("option:selected").val();
+
+        $('#audiobook_episode_id').empty('');
+        $('#audiobook_episode_id').append('<option value="" selected>{{__("label.select_audiobook_episode")}}</option>');
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: 'POST',
+            url: '{{ route("admin.salesaudiobooks.get_episode") }}',
+            data: {
+                id: id
+            },
+            success: function(resp) {
+                for (i = 0; i < resp.result.length; i++) {
+                    $('#audiobook_episode_id').append('<option value="' + resp.result[i]['id'] + '">' + resp.result[i]['title'] + '</option>');
+                }
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                toastr.error(errorThrown, textStatus);
+            }
+
+        })
+    });
+     $('#author_id').change(function() {
+        var id = $(this).children("option:selected").val();
+
+        $('#audiobook_id').empty('');
+        $('#audiobook_id').append('<option value="" selected>{{__("label.select_audiobook")}}</option>');
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: 'POST',
+            url: '{{ route("admin.salesaudiobooks.get_audiobook") }}',
+            data: {
+                id: id
+            },
+            success: function(resp) {
+                for (i = 0; i < resp.result.length; i++) {
+                    $('#audiobook_id').append('<option value="' + resp.result[i]['id'] + '">' + resp.result[i]['title'] + '</option>');
+                }
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                toastr.error(errorThrown, textStatus);
+            }
+
+        })
+    });
+    
+</script>
+@endsection

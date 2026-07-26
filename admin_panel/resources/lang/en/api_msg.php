@@ -1,0 +1,45 @@
+
+<?php
+return [
+
+   'data_not_save' => 'Data Not Saved.',
+   'data_not_found' => 'Data Not Found.',
+   'login_successfully' => 'Login Successfully.',
+   'email_pass_wrong' => 'Email and Password Wrong.',
+   'data_retrieved' => 'Data Retrieved Successfully.',
+   'user_name_exists' => 'This User Name is already Exists.',
+   'profile_update_successfully' => 'Profile Update Successfully.',
+   'review_add_successfully' => 'Review Added Successfully.',
+   'review_delete_successfully' => 'Review Delete Successfully.',
+   'view_add_successfully' => 'View Add Successfully.',
+   'remove_bookmark_successfully' => 'Remove Bookmark Successfully.',
+   'add_bookmark_successfully' => 'Add Bookmark Successfully.',
+   'you_are_already_a_author' => 'You are already a Author.',
+   'you_have_already_sent_the_request' => 'You have already Sent the Request.',
+   'your_request_has_been_sent_successfully_wait_for_admin_to_approve' => 'Your request has been sent Successfully. Wait for Admin to Approve.',
+   'transaction_successfully' => 'Transaction Successfully.',
+   'email_exists' => 'Email Already Exits.',
+   'mobile_number_exists' => 'Mobile Number Already Exits.',
+   'notification_read_successfully' => 'Notification Read Successfully.',
+   'coupon_applied_successfully' => "Coupon Applied Successfully",
+   'invalid_coupon_code' => "Invalid Coupon Code",
+   'coupon_is_not_valid_at_this_time' => "Coupon Is Not Valid At This Time",
+   'coupon_already_used' => "Coupon Already Used",
+   'coupon_limit_exceeded' => "Coupon Limit Exceeded",
+   'logout_successfull' => "Logout Successfull",
+   'transaction_update' => "Transaction Updated Successfully",
+   'form_submit' => "Form Submit Successfully",
+   'form_not_submit' => "Form Not Submit",
+   'we_have_sent_a_new_password_to_your_email_please_check_your_inbox' => "We Have Sent A New Password To Your Email Please Check Your Inbox",
+   'user_not_found' => "User Not Found",
+   'plan_not_found' => "Plan Not Found",
+   'data_save' => "Data Save Successfully",
+   'time_exceeds_limit' => "Time Must Be Greator Than 60s",
+   'password_must_be_atleast_4_character' => "Password Must Be Atleast 4 Character",
+   'password_do_not_match' => "Password Do Not Match",
+   'no_active_plan' => "No Active Plan",
+   'subscription_cancel' => "Subscription Cancel Successfully",
+   'you_already_have_an_upcoming_plan' => "You already have an upcoming plan"
+];
+
+?>
