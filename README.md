@@ -32,14 +32,14 @@ vitabu/
 
 ## Features
 
-- 📚 Browse ebooks & magazines by category/language
-- 🌐 Multi-language support (English, Hindi, Arabic)
-- 📖 Built-in PDF & EPUB reader
-- 🔖 Bookmarks, highlights, notes
-- 🎵 Audio courses & audiobooks
-- 💳 In-app purchases & subscriptions
-- 👤 User profiles & author registration
-- ⚙️ Admin panel for content management
+- Browse ebooks & magazines by category/language
+- Multi-language support (English, Hindi, Arabic)
+- Built-in PDF & EPUB reader
+- Bookmarks, highlights, notes
+- Audio courses & audiobooks
+- In-app purchases & subscriptions
+- User profiles & author registration
+- Admin panel for content management
 
 ## Getting Started
 
