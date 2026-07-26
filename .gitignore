@@ -85,3 +85,9 @@ yarn-error.log*
 .env
 .env.local
 .env.*.local
+
+# ==============================
+# Firebase / Google config (per-environment)
+# ==============================
+google-services.json
+GoogleService-Info.plist
